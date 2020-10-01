@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 
+//styled-component for Header.js
 const NavHeader = styled.div`
     position: fixed;
     display: flex;
@@ -18,7 +19,7 @@ const NavHeader = styled.div`
 export default function Header() {
     return (
         <NavHeader>
-            <h1>Top 20 topics for "/r/ProgrammerHumor"</h1>
+            <h1>Top 20 topics for '/r/ProgrammerHumor'</h1>
         </NavHeader>
     );
 }

@@ -4,6 +4,7 @@ import Header from '../components/header/Header';
 import { fetchData } from '../api';
 import styled from 'styled-components';
 
+//styled-components for Home.js
 const Conatiner = styled.div`
     display: flex;
     flex-direction: row;
@@ -14,7 +15,7 @@ const Conatiner = styled.div`
     position: relative;
     top:150px;
 `;
-
+//Returns posts sorted by the number of comments in descending order
 const sortPostDes = (posts) => {
     const sortedPosts = posts.sort((a, b) => a.data.num_comments < b.data.num_comments ? 1 : -1);
     return sortedPosts;

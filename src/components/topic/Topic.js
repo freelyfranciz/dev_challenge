@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 const redditUrl = "https://www.reddit.com/";
 
-//styled compnents for Topic.js 
+//styled-compnents for Topic.js 
 const Item = styled.div`
-      margin: 15px;
+      margin: 20px;
       border-radius: 10px;
       box-shadow: 0px 5px 20px 0px #000000a6;
       background: ${props => (getCss(props.score))}
@@ -28,10 +28,6 @@ const DetailsHeader = styled.div`
       display: flex;
       flex-direction: row;`;
 const Upvotes = styled.div`margin-left: auto;`;
-
-const getCss = (score) => {
-  return score % 2 ? '#FF7F50' : '#7FB3D5';
-}
 const Author = styled.div`
       margin-left: auto;
       font-size: large;
@@ -42,6 +38,12 @@ const Title = styled.div`
       font-style: italic;
       `;
 
+//function to check whether score is even or odd
+  const getCss = (score) => {
+    return !(score % 2) ? '#FF7F50' : '#87CEEB';
+}
+
+//open a new window to view the post 
 const vistPost = (permalink) => {
   window.open(`${redditUrl}${permalink}`, '_blank');
 }
