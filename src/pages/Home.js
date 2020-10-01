@@ -1,22 +1,47 @@
 import React, { useState, useEffect } from 'react'
-import Topic from '../components/Topic';
+import Topic from '../components/topic/Topic';
+import Header from '../components/header/Header';
 import { fetchData } from '../api';
+import styled from 'styled-components';
 
-export default function Home() {
-    const [data, setData] = useState([]);
+const Conatiner = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    position: relative;
+    top:150px;
+`;
 
-    useEffect(async () => {
-        const fetchedData = await fetchData();
-        if (fetchedData) {
-            setData(fetchedData.data.children);
-        }
+const sortPostDes = (posts) => {
+    const sortedPosts = posts.sort((a, b) => a.data.num_comments < b.data.num_comments ? 1 : -1);
+    return sortedPosts;
+}
+
+const Home = () => {
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        (async () => {
+            const redditPosts = await fetchData();
+            const sortedPosts = sortPostDes(redditPosts);
+            setPosts(sortedPosts);
+        })();
     }, []);
 
     return (
-        <ul>
-            {data.sort((a, b) => a.data.num_comments < b.data.num_comments ? 1 : -1).map((data, i) =>
-                <li key={i}>< Topic data={data.data} /></li>
-            )}
-        </ul>
+        <>
+            <Header />
+            <Conatiner>
+                {posts.map((posts, rank) =>
+                    <Topic key={rank} posts={posts.data} rank={rank} />
+                )}
+            </Conatiner>
+
+        </>
     )
 }
+
+export default Home;
