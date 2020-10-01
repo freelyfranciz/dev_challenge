@@ -5,7 +5,7 @@ const redditUrl = "https://www.reddit.com/";
 
 //styled compnents for Topic.js 
 const Item = styled.div`
-      margin: 10px;
+      margin: 15px;
       border-radius: 10px;
       box-shadow: 0px 5px 20px 0px #000000a6;
       background: ${props => (getCss(props.score))}
@@ -15,9 +15,8 @@ const Img = styled.img`
       width: 300px;
       height: 300px;`;
 const Details = styled.div`
-      opacity: 0.5;
       padding: 5px 10px;
-      color: #0a1603;
+      color: black;
       display:flex;
       gap: 20px;
       flex-direction: column;`;
@@ -31,12 +30,17 @@ const DetailsHeader = styled.div`
 const Upvotes = styled.div`margin-left: auto;`;
 
 const getCss = (score) => {
-  return score % 2 ? 'linear-gradient(#F5B041, #EB984E)' : 'linear-gradient(#7FB3D5, #85C1E9)';
+  return score % 2 ? '#FF7F50' : '#7FB3D5';
 }
-const Author = styled.div`margin-left: auto;`;
+const Author = styled.div`
+      margin-left: auto;
+      font-size: large;
+      color: black`;
 const Title = styled.div` 
       height: 25px;
-      max-width: 280px;`;
+      max-width: 280px;
+      font-style: italic;
+      `;
 
 const vistPost = (permalink) => {
   window.open(`${redditUrl}${permalink}`, '_blank');
@@ -49,12 +53,12 @@ export default function Topic({ posts: { author, num_comments, title, permalink,
       <Details>
         <DetailsHeader>
           <div>#{rank + 1}</div>
-          <Author>{author}</Author>
+          <Author role="author">{author}</Author>
         </DetailsHeader>
-        <Title onClick={() => vistPost(permalink)}>{title}</Title>
+        <Title role="postTitle" onClick={() => vistPost(permalink)}>{title}</Title>
         <DetailsFooter>
-          <span>{num_comments} comments</span>
-          <Upvotes>{ups} ups</Upvotes>
+          <span role="numComments">{num_comments} comments</span>
+          <Upvotes role="ups">{ups} ups</Upvotes>
         </DetailsFooter>
       </Details>
     </Item>

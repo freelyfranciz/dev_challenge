@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components';
 
-const NavHeader = styled.div`position: fixed;
+const NavHeader = styled.div`
+    position: fixed;
     display: flex;
     justify-content: center;
     text-align: center;
@@ -10,8 +11,8 @@ const NavHeader = styled.div`position: fixed;
     z-index: 100;
     left: 0;
     right: 0;
-    background-color: white;
     background-image: url('/images/bg-header.png');
+    box-shadow: 0px 5px 20px 0px #000000a6;
 `;
 
 export default function Header() {
