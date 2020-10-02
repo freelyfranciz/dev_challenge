@@ -1,19 +1,21 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Topic from './Topic';
+import Topic from './Topic.js';
 
 const postVar = {
     title: "test title",
-    num_comments: 100,
     ups: 100,
-    author:"test"
+    author:"test",
+    num_comments: 100
 }
 const rank = 1;
 
 test('loads and displays title', async () => {
-    render(<Topic posts={postVar} rank={rank} />);  
+    render()
+        {return (<Topic posts={postVar} rank={rank} />);}
+      
     expect(screen.getByRole('postTitle')).toHaveTextContent('test title');
-    expect(screen.getByRole('numComments')).toHaveTextContent(100);
     expect(screen.getByRole('ups')).toHaveTextContent(100);
     expect(screen.getByRole('author')).toHaveTextContent('test');
+   
   })

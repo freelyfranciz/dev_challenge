@@ -8,7 +8,7 @@ const Item = styled.div`
       margin: 20px;
       border-radius: 10px;
       box-shadow: 0px 5px 20px 0px #000000a6;
-      background: ${props => (getCss(props.score))}
+      background: ${props => (getCss(props.score))};
       `;
 const Img = styled.img`
       border-radius: 10px 10px 0px 0px;
@@ -33,7 +33,7 @@ const Author = styled.div`
       font-size: large;
       color: black`;
 const Title = styled.div` 
-      height: 25px;
+      height: 30px;
       max-width: 280px;
       font-style: italic;
       `;
@@ -51,7 +51,7 @@ const vistPost = (permalink) => {
 export default function Topic({ posts: { author, num_comments, title, permalink, ups, url, score }, rank }) {
   return (
     <Item score={score} onClick={() => vistPost(permalink)}>
-      <Img alt="tumbnail" src={url} onError={(e) => { e.target.onerror = null; e.target.src = "/images/snoo.jpg" }} />
+      <Img alt="tumbnail" src={url} onError={(e) => { e.target.onerror = null; e.target.src ="/images/snoo.jpg" }}/>
       <Details>
         <DetailsHeader>
           <div>#{rank + 1}</div>
@@ -59,7 +59,7 @@ export default function Topic({ posts: { author, num_comments, title, permalink,
         </DetailsHeader>
         <Title role="postTitle" onClick={() => vistPost(permalink)}>{title}</Title>
         <DetailsFooter>
-          <span role="numComments">{num_comments} comments</span>
+          <span>{num_comments} comments</span>
           <Upvotes role="ups">{ups} ups</Upvotes>
         </DetailsFooter>
       </Details>
